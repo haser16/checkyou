@@ -1,0 +1,143 @@
+body{
+    margin: 0 auto;
+    font-family: system-ui, -apple-system, BlinkMacSystemFont, 'Segoe UI', Roboto, Oxygen, Ubuntu, Cantarell, 'Open Sans', 'Helvetica Neue', sans-serif;
+    overflow-x: hidden;
+}
+.header-main{
+    background: linear-gradient(blue, purple);
+    width: 100%;
+    height: 100vh;
+}
+.header__inner{
+    display: flex;
+    justify-content: space-around;
+    flex-wrap: wrap;
+}
+.header__logo{
+    color:white;
+    font-weight: 700;
+    font-size: 50px;
+}
+.nav{
+    margin-top: 10px;
+}
+.item{
+    text-decoration: none;
+    color:white;
+    font-size:20px;
+    padding: 10px;
+    transition: color .2s linear;
+}
+.item:hover{
+    color:rgb(170, 170, 5);
+}
+.header__titles{
+    height: 80vh;
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    justify-content: center;
+}
+.header__suptitle{
+    font-family: 'Kaushan Script', cursive;
+    color:white;
+    font-size: 50px;
+}
+.header__title{
+    font-family: 'Robbo', cursive;
+    font-weight: 900;
+    text-transform: uppercase;
+    color:white;
+    font-size: 100px;
+}
+.header__button{
+    text-decoration: none;
+    padding: 10px 30px;
+    border: 2px solid white;
+    font-size: 20px;
+    color:white;
+    transition: all .2s linear;
+    text-align: center;
+}
+.header__button:hover{
+    border-color: yellow;
+    color:yellow;
+}
+.about__inner{
+    text-align: center;
+}
+.about__subtitle{
+    font-family:system-ui, -apple-system, BlinkMacSystemFont, 'Segoe UI', Roboto, Oxygen, Ubuntu, Cantarell, 'Open Sans', 'Helvetica Neue', sans-serif;
+    font-weight: 900;
+    text-transform: uppercase;
+    font-size: 20px;
+}
+.card-test{
+    display: flex;
+    width: 40%;
+    border-radius: 30px;
+    padding: 20px;
+    margin: 20px;
+    text-align: left;
+    text-decoration: none;
+    color: #fff;
+    background-color: purple;
+    box-shadow:
+    inset 0 -3em 3em rgba(0, 0, 0, 0.1),
+    0 0 0 2px rgb(255, 255, 255),
+    0.3em 0.3em 1em rgba(0, 0, 0, 0.3);
+}
+.img-card-test{
+    border-radius: 20px;
+    padding-right: 20px;
+}
+.container{
+    display: flex;
+    flex-wrap: wrap;
+    justify-content: center;
+}
+.card-test_title{
+    font-size: 20px;
+}
+.card-test_subject{
+    font-weight: 700;
+}
+.card-test_questions{
+    font-size: 20px;
+    font-weight: 700;
+}
+.footer-main{
+    border-top: 1px solid black;
+}
+.footer-inner{
+    display: flex;
+    justify-content: center;
+    flex-wrap: wrap;
+}
+.column-footer{
+    margin: 20px 100px;
+    display: flex;
+    flex-direction: column;
+}
+.column-footer a{
+    padding: 5px 0;
+    text-decoration: none;
+    color: black;
+}
+.footer-title{
+    display: flex;
+    justify-content: center;
+}
+
+@media screen and (max-width: 1100px) {
+    .card-test{
+        width: 100%;
+        flex-direction: column;
+    }
+    .header__logo{
+        display:none;
+    }
+    .nav{
+        text-align: center;
+    }
+}

@@ -1,0 +1,28 @@
+body{
+    margin: 0 auto;
+    font-family: system-ui, -apple-system, BlinkMacSystemFont, 'Segoe UI', Roboto, Oxygen, Ubuntu, Cantarell, 'Open Sans', 'Helvetica Neue', sans-serif;
+    overflow-x: hidden;
+    display: flex;
+    justify-content: center;
+    text-align: center;
+}
+.header-complite{
+    display: flex;
+    flex-direction: column;
+    
+}
+.header__logo{
+    font-weight: 700;
+    font-size: 50px;
+}
+.button-complite{
+    margin-top: 30px;
+}
+.btn-complite{
+    text-decoration: none;
+    background-color: blue;
+    padding: 20px;
+    font-size: 20px;
+    border-radius: 20px;
+    color: #fff;
+}

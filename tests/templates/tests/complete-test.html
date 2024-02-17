@@ -1,0 +1,27 @@
+{% load static %}
+
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>CheckYou</title>
+    <link rel="stylesheet" href="{% static 'css/compile-test.css' %}">
+</head>
+<body>
+    <header class="header-complite">
+        <div class="header__logo">
+            CheckYou
+        </div>
+        <div class="description-coplite">
+            Вы успешно прошли тест
+        </div>
+        <div class="point">
+            Правильных ответов: <b>{{answers}}</b>
+        </div>
+        <div class="button-complite">
+            <a href="{% url 'index' %}" class="btn-complite">Вернуться на главный экран</a>
+        </div>
+    </header>
+</body>
+</html>

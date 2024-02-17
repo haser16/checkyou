@@ -1,0 +1,25 @@
+{% extends 'users/base.html' %}
+
+{% block section %}
+<section class="about">
+    <div class="about__inner">
+        <div class="about__subtitle">
+            <h2>Ваши тесты</h2>
+        </div>
+        <div class="container">
+            {% for test in tests %}
+            <a class="card-test" href="{% url 'tests:test-card' test.name test.id %}">
+                <img src="{{test.image.url}}" alt="Image" width="40%" class="img-card-test">
+                <div class="content-card-test">
+                    <p class="card-test_title">{{test.name}}</p>
+                    <p class="card-test_subject">{{test.subject}}</p>
+                    <p class="card-test_class">{{test.number_class}}</p>
+                    <p class="card-test_teacher">{{test.teacher}}</p>
+                </div>
+            </a>
+            {% endfor %}
+        </div>
+    </div>
+</section>
+{% endblock %}
+

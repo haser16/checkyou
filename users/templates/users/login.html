@@ -1,0 +1,16 @@
+{% extends 'users/base.html' %}
+
+
+{% block section %}
+<section class="login">
+    <div class="login-card">
+        <form action="{% url 'users:login' %}" class="form-login" method="post">
+            {% csrf_token %}
+            <p>Вход</p>
+            {{form.username}}
+            {{form.password}}
+            <button type="submit" class="button-form">Войти</button>
+        </form>
+    </div>
+</section>
+{% endblock %}

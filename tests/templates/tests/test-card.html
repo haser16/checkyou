@@ -1,0 +1,36 @@
+{% load static %}
+
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>CheckYou</title>
+    <link rel="stylesheet" href="{% static 'css/test.css' %}">
+</head>
+<body>
+    <section class="question-card">
+        <form class="ansers" action="{% url 'tests:test-card' name id %}" method="post">
+            {% csrf_token %}
+            {% for question in questions %}
+                <div class="question">
+                    <h3>{{question.question}}</h3>
+                </div>
+                <div class="answer">
+                    <input type="radio" name="{{question.id}}" value="{{question.answer1}}">
+                    <p class="description-queston">{{question.answer1}}</p>
+                </div>
+                <div class="answer">
+                    <input type="radio" name="{{question.id}}" value="{{question.answer2}}">
+                    <p class="description-queston">{{question.answer2}}</p>
+                </div>
+                <div class="answer">
+                    <input type="radio" name="{{question.id}}" value="{{question.answer3}}">
+                    <p class="description-queston">{{question.answer3}}</p>
+                </div>
+            {% endfor %}
+            <button type="submit" class="btn-answer">Ответить</button>
+        </form>
+    </section>
+</body>
+</html>

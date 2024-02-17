@@ -1,0 +1,42 @@
+{% extends 'users/base.html' %}
+
+
+{% block section %}
+<section class="registraion">
+                {% if form.errors %}
+                    <div class="alert alert-warning alert-dismissible fade show" role="alert"
+                         style="margin-top: 50px;">
+                        {{ form.errors }}
+                        <button type="button" class="close" data-dismiss="alert" aria-label="Close">
+                            <span aria-hidden="true">&times;</span>
+                        </button>
+                    </div>
+                {% endif %}
+        <div class="register-card">
+            <form action="{% url 'users:registration' %}" method="post" class="form-login">
+                {% csrf_token %}
+                <p>Регистрация</p>
+                <div class="container-register">
+                    <div class="col-1">
+                        {{form.first_name}}
+                        {{form.last_name}}
+                        {{form.surname}}
+                        {{form.number_class}}
+                    </div>
+                    <div class="col-2">
+                        {{form.username}}
+                        {{form.email}}
+                        {{form.password1}}
+                        {{form.password2}}
+                    </div>
+                </div>
+                {{form.school}}
+                <div class="for-teacher">
+                    {{form.is_teacher}}
+                    <p>Являюсь учителем</p>
+                </div>
+                <button type="submit" class="button-form">Зарегистрироваться</button>
+            </form>
+        </div>
+</section>
+{% endblock %}
