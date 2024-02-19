@@ -27,9 +27,10 @@ def test_card(request, name, id):
         for answer, true_answer in zip(answers, true_answers):
             if answer == true_answer:
                 success += 1
-        print(success)
 
-        return redirect(reverse('tests:complete-test', args={success}))
+        url = reverse('tests:complete-test') + f'?success={success}'
+
+        return redirect(url)
 
     else:
         questions = Questions.objects.filter(test__id=id)
@@ -42,8 +43,8 @@ def test_card(request, name, id):
         return render(request, 'tests/test-card.html', context)
 
 
-def complete_test(request, success):
-
+def complete_test(request):
+    success = request.GET.get('success')
     context = {'answers': success}
 
     return render(request, 'tests/complete-test.html', context)
