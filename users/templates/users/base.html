@@ -5,9 +5,10 @@
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>CheckYou Registration</title>
+    <title>{{title}}</title>
     <link rel="stylesheet" href="{% static 'css/login.css' %}">
     <link rel="stylesheet" href="{% static 'css/style.css' %}">
+    <link rel="icon" href="{% static 'img/icon.png' %}">
 </head>
 <body>
     <header class="header-login">
@@ -20,10 +21,13 @@
                 <a href="{% url 'users:login' %}" class="item">Войти</a>
                 <a href="{% url 'users:registration' %}" class="item">Зарегистрироваться</a>
                 {% else %}
-                {% if not user.is_superuser or not user.is_staff %}
+                {% if not user.school or not user.number_class %}
                 <a href="{% url 'tests:tests' user.school user.number_class %}" class="item">Тесты</a>
                 {% endif %}
                 <a href="{% url 'users:logout' %}" class="item">Выйти</a>
+                {% endif %}
+                {% if user.is_superuser or user.is_staff %}
+                <a href="{% url 'admin:index'%}" class="item">Админ-панель</a>
                 {% endif %}
             </nav>
         </div>

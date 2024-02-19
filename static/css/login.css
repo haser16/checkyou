@@ -62,8 +62,12 @@ body{
     display: flex;
     flex-direction: column;
     padding: 40px;
+    margin-top:200px;
     background: linear-gradient(blue, purple);
     border-radius: 20px;
+}
+.error-form{
+    color:white;
 }
 .form-login p{
     text-align: center;

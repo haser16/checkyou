@@ -3,6 +3,7 @@ import json
 from django.db.utils import IntegrityError
 from django.shortcuts import HttpResponse
 from django.views.decorators.csrf import csrf_exempt
+from rest_framework.authentication import SessionAuthentication, BasicAuthentication
 from rest_framework.generics import ListAPIView
 
 from users.models import Questions, Tests, User
@@ -11,12 +12,14 @@ from users.serializers import QuestionSerializer, TestsSerializer
 
 class TestsListAPIView(ListAPIView):
     serializer_class = TestsSerializer
+    authentication_classes = [SessionAuthentication, BasicAuthentication]
 
     def get_queryset(self):
         school = self.request.query_params.get('school')
         class_number = self.request.query_params.get('class-number')
+        print(self.request.user)
         if school and class_number is not None:
-            queryset = Tests.objects.filter(school__name=school, number_class__name=class_number)
+            queryset = Tests.objects.filter(school__name=self.request.user.school, number_class__name=self.request.user.number_class)
             return queryset
 
 
@@ -53,18 +56,26 @@ def check_answers(request):
 
 @csrf_exempt
 def registration(request):
-    answers = json.loads(request.body)
+    first_name = request.GET.get('first-name')
+    last_name = request.GET.get('last-name')
+    surname = request.GET.get('surname')
+    email = request.GET.get('email')
+    username = request.GET.get('username')
+    number_class = request.GET.get('number-class')
+    school = request.GET.get('school')
+    password = request.GET.get('password')
     try:
         User.objects.create_user(
-            username=answers['username'],
-            email=answers['email'],
-            password=answers['password'],
-            first_name=answers['first_name'],
-            last_name=answers['last_name'],
-            surname=answers['surname'],
-            number_class=answers['number_class'],
-            school=answers['school'],
+            username=username,
+            email=email,
+            password=password,
+            first_name=first_name,
+            last_name=last_name,
+            surname=surname,
+            number_class=number_class,
+            school=school,
         )
-        return HttpResponse('Success')
     except (IntegrityError):
         return HttpResponse('Bad')
+    return HttpResponse('Success')
+

@@ -14,12 +14,16 @@ def registration(request):
     form = UserRegistrationForm()
     context = {
         'form': form,
+        'title': 'CheckYou - Регистрация',
     }
 
     return render(request, 'users/registration.html', context)
 
 
 def login(request):
+    context = {
+        'title': 'CheckYou - Вход',
+    }
     if request.method == 'POST':
         form = UserLoginForm(data=request.POST)
         if form.is_valid():
@@ -30,11 +34,14 @@ def login(request):
                 auth.login(request, user)
                 return HttpResponseRedirect('/')
 
-    else:
-        form = UserLoginForm()
-        context = {'form': form}
-        return render(request, 'users/login.html', context)
+    form = UserLoginForm()
+    context["form"] = form
+
+    return render(request, 'users/login.html', context)
 
 
 def index(request):
-    return render(request, 'users/index.html')
+    context = {
+        'title': 'CheckYou',
+    }
+    return render(request, 'users/index.html', context)
